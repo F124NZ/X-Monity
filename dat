@@ -1,0 +1,30 @@
+#!/bin/bash
+#data claim :
+#forgot
+m='\033[31;1m'
+k='\033[93'
+h='\033[92m'
+b='\033[94m'
+p='\033[95m'
+c='\033[1;36m'
+z='\033[0m'
+function percent(){
+
+      message="$1"
+      max=$2
+      while true; do
+          i=0
+          while [ $i -le $max ]; do
+              echo -ne "\r${h}[+]${z} "$b"$message ${c}$i${z} %"
+              sleep 0.1
+              if [ $i -eq 100 ]; then
+                  echo -ne "${p} Klaim Kuota Berhasil"$z
+                  percent "memproses ..." 1000
+              fi
+              let i++
+          done
+      done
+}
+percent "memproses ..." 1000
+echo''
+echo $k' Proses Diatas Adalah Proses Pengumpulan Data'$z
